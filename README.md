@@ -1,9 +1,4 @@
 # gopack
-[![Build Status](https://travis-ci.org/gobuild/gopack.svg)](https://travis-ci.org/gobuild/gopack)
-[![gorelease](https://dn-gorelease.qbox.me/gorelease-download-blue.svg)](https://gobuild.io/gobuild/gopack)
-
-Tool for [gobuild](https://gobuild.io)
-
 The original https://github.com/gobuild/gopack no longer works with broken
 dependencies, and the gobuild.io it integrated with no longer exists. However,
 this is still useful to easily build and zip a project, so this fork allows
