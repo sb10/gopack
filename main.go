@@ -14,8 +14,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/codegangsta/cli"
-	"github.com/gobuild/gopack/cmds"
+	"github.com/sb10/gopack/cmds"
+	"github.com/urfave/cli"
 	goyaml "gopkg.in/yaml.v2"
 )
 

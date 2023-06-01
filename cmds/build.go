@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 )
 
 var BuildFlag = cli.Command{

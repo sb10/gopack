@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"os/exec"
@@ -13,8 +15,7 @@ import (
 	"strings"
 
 	"github.com/cheggaaa/pb"
-	"github.com/codegangsta/cli"
-	"github.com/qiniu/log"
+	"github.com/urfave/cli"
 )
 
 var InstallFlag = cli.Command{
@@ -75,7 +76,7 @@ func downloadSource(name string) (dest string, err error) {
 		owner, repo, osarch, repo)
 
 	prompt("Downloading %v", url)
-	log.Debug("download:", url)
+	log.Println("download:", url)
 	dest = getInsPath("src", fmt.Sprintf("%s.zip", repo))
 
 	resp, err := http.Get(url)
@@ -110,7 +111,7 @@ func downloadSource(name string) (dest string, err error) {
 
 func deployPackage(pkgName, path string, binDir string) error {
 	cmd := exec.Command("unzip", "-o", "-d", getInsPath("opt", pkgName), path)
-	log.Debug("zip command:", cmd.Args)
+	log.Println("zip command:", cmd.Args)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
@@ -134,8 +135,11 @@ func prompt(format string, args ...interface{}) {
 
 func InstallAction(c *cli.Context) {
 	if c.Bool("debug") {
-		log.SetOutputLevel(log.Ldebug)
+		log.SetOutput(os.Stderr)
+	} else {
+		log.SetOutput(ioutil.Discard)
 	}
+
 	if len(c.Args()) < 1 {
 		log.Fatal("Need at lease one argument")
 	}

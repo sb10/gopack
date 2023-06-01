@@ -4,13 +4,17 @@
 
 Tool for [gobuild](https://gobuild.io)
 
+The original https://github.com/gobuild/gopack no longer works with broken
+dependencies, and the gobuild.io it integrated with no longer exists. However,
+this is still useful to easily build and zip a project, so this fork allows
+for that.
+
 ## Features
 1. Create `.gopack.yml` config file
 2. Build and package build into zip
-3. Download and install binary from <https://gobuild.io>
 
 ## Install
-	go get -v github.com/gobuild/gopack
+	go install github.com/sb10/gopack@latest
 
 ## Usage
 	$ gopack init

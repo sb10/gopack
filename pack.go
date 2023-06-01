@@ -7,9 +7,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/codegangsta/cli"
 	sh "github.com/codeskyblue/go-sh"
 	"github.com/gobuild/log"
+	"github.com/urfave/cli"
 )
 
 func shExecString(sess *sh.Session, command string) error {
